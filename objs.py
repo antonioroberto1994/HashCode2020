@@ -2,8 +2,12 @@ import sys
 
 class Book():
     def __init__(self, id, score):
-        self.id = id
-        self.score = score
+        self.id = int(id)
+        self.score = int(score)
+    def __str__(self):
+        return "(%d->score=%d)" % (self.id, self.score)
+    def __repr__(self):
+        return self.__str__()
 
 class Library():
     def __init__(self, books_in_lib, nbooks_per_day, signup_time):
@@ -13,22 +17,25 @@ class Library():
     def get_score(self, remaining_days, scanned_books):
         pass
     def get_books(self):
-        pass
+        return self.books_in_lib
     def get_books_next_day(self, remaining_books):
         pass
+    def __str__(self):
+        return str(self.books_in_lib)
+    def __repr__(self):
+        return self.__str__()
 
 
 
 def read_file(fname):
     libraries = []
     with open(fname, 'r') as f:
-        nbooks = int(next(f))
-        nlibraries = int(next(f))
-        days = int(next(f))
+        xx = next(f).strip().split(' ')
+        nbooks, nlibraries, days = [int(x) for x in xx]
         scores = next(f).strip().split(' ')
         books = [Book(i,s) for i,s in enumerate(scores)]
-        xx = next(f).strip().split(' ')
         for j in range(nlibraries):
+            xx = next(f).strip().split(' ')
             Nj, Tj, Mj = [int(x) for x in xx]
             xx = next(f).strip().split(' ')
             books_in_lib = [books[int(x)] for x in xx]
@@ -50,7 +57,8 @@ class LoadData():
 
 
 def main(fname):
-    pass
+    loader = LoadData(fname)
+    print( [str(l) for l in loader.get_library_list()] )
 
 if "__main__" == __name__:
     main(sys.argv[1])
