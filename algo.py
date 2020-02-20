@@ -37,6 +37,7 @@ if __name__ == "__main__":
     remaining_days = data.get_days()
     scanned_books = {}
 
+    output_scanned = []
     output_lib = []
 
     while len(library_list) != 0 and remaining_days > 0:
@@ -50,6 +51,7 @@ if __name__ == "__main__":
             _, next_library = priority_queue.max()
 
             # aggiungo per l'output
+            output_scanned.append( library_list.copy() )
             output_lib.append(next_library)
 
             # Aggiorno le librerie da scansionare
@@ -67,3 +69,10 @@ if __name__ == "__main__":
         library_list = [library for library in library_dict.keys()]
 
     print("Bravo a zia")
+    
+    print(len(output_lib))
+    for l,s in zip(output_lib, output_scanned):
+        books = l.get_books_in_order(s)
+        print(l.id,len(books))
+        for b in books:
+            print(b.id)
