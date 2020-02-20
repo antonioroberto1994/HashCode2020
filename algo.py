@@ -46,9 +46,9 @@ if __name__ == "__main__":
 
         remaining_update_steps = updating_frequency
 
-        while remaining_update_steps != 0:
+        while remaining_update_steps != 0 and len(priority_queue) > 0:
             # prendo la libreria a massimo guadagno
-            _, next_library = priority_queue.max()
+            _, next_library = priority_queue.remove_max()
 
             # aggiungo per l'output
             output_scanned.append( library_list.copy() )
