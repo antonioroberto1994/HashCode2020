@@ -4,7 +4,7 @@ class Book():
     def __init__(self, id, score):
         self.id = int(id)
         self.score = int(score)
-        
+
     def __str__(self):
         return "(%d->score=%d)" % (self.id, self.score)
 
@@ -63,10 +63,13 @@ def read_file(fname):
 class LoadData():
     def __init__(self, path):
         self.libraries, self.nbooks, self.days, self.scores = read_file(path)
+
     def get_books_scores(self):
         return self.scores
+    
     def get_library_list(self):
         return self.libraries
+    
     def get_days(self):
         return self.days
 
