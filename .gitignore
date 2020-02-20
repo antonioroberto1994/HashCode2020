@@ -127,3 +127,10 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+hc2020.zip
+data/a_example._output.txt
+data/b_read_on_output.txt
+data/c_incunabula_output.txt
+data/d_tough_choices_output.txt
+data/e_so_many_books_output.txt
+data/f_libraries_of_the_world_output.txt

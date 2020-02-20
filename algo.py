@@ -3,7 +3,7 @@ import os, sys
 from objs import Library, LoadData
 from max_heap import MaxHeap
 
-updating_frequency = 5
+updating_frequency = 1000
 
 
 def update_queue(library_list):
@@ -67,11 +67,13 @@ if __name__ == "__main__":
         # Aggiorno library list
         # le chiavi del dizionario sono le librerie che non ho allocato
         library_list = [library for library in library_dict.keys()]
-
-    print("Bravo a zia")
     
-    print(len(output_lib))
-    for l,s in zip(output_lib, output_scanned):
-        books = l.get_books_in_order(s)
-        print(l.id,len(books))
-        print(' '.join([str(b.id) for b in books]))
+    outfilename = sys.argv[1].replace(".txt","_output.txt")
+
+    with open(outfilename, "w") as f:
+        f.write("{}\n".format(len(output_lib)))
+
+        for l,s in zip(output_lib, output_scanned):
+            books = l.get_books_in_order(s)
+            f.write("{} {}\n".format(l.id,len(books)))
+            f.write("{}\n".format(' '.join([str(b.id) for b in books])))
