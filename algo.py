@@ -67,8 +67,6 @@ if __name__ == "__main__":
         # Aggiorno library list
         # le chiavi del dizionario sono le librerie che non ho allocato
         library_list = [library for library in library_dict.keys()]
-
-    print("Bravo a zia")
     
     print(len(output_lib))
     for l,s in zip(output_lib, output_scanned):
