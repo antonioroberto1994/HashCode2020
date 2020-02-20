@@ -47,7 +47,7 @@ class Library():
         return [b.id for b in self.books_in_lib if b not in scanned_books]
 
     def __str__(self):
-        return ("Library %d: " % self.id )+ str(self.books_in_lib) 
+        return ("Library %d: " % self.id )#+ str(self.books_in_lib) 
 
     def __repr__(self):
         return self.__str__()
