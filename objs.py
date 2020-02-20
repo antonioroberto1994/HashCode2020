@@ -31,13 +31,15 @@ class Library():
 
     def get_books(self):
         return self.books_in_lib
+
     def get_books_next_day(self, remaining_books):
         pass
+
     def __str__(self):
         return str(self.books_in_lib)
+
     def __repr__(self):
         return self.__str__()
-
 
 
 def read_file(fname):
@@ -56,7 +58,6 @@ def read_file(fname):
             libraries.append(Library(books_in_lib, Mj, Tj))
     return libraries, nbooks, days, scores
     
-
 class LoadData():
     def __init__(self, path):
         self.libraries, self.nbooks, self.days, self.scores = read_file(path)
@@ -66,7 +67,6 @@ class LoadData():
         return self.libraries
     def get_days(self):
         return self.days
-
 
 
 def main(fname):
