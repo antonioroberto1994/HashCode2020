@@ -39,7 +39,7 @@ class Library():
             x.append(b)
             if i> max_books:
                 break
-        return
+        return x
 
     def get_books_in_order(self, scanned_books):
         # .join(' ')
