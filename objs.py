@@ -6,12 +6,15 @@ class Book():
         self.score = int(score)
     def __str__(self):
         return "(%d->score=%d)" % (self.id, self.score)
+    def __lt__(self, other):
+        return self.score < other.score
+
     def __repr__(self):
         return self.__str__()
 
 class Library():
     def __init__(self, books_in_lib, nbooks_per_day, signup_time):
-        self.books_in_lib = books_in_lib
+        self.books_in_lib = sorted(books_in_lib, reverse=True)
         self.nbooks_per_day = nbooks_per_day
         self.signup_time = signup_time
     def get_score(self, remaining_days, scanned_books):
