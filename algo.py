@@ -46,9 +46,9 @@ if __name__ == "__main__":
 
         remaining_update_steps = updating_frequency
 
-        while remaining_update_steps != 0 and len(priority_queue) > 0:
+        while remaining_update_steps != 0:
             # prendo la libreria a massimo guadagno
-            _, next_library = priority_queue.remove_max()
+            _, next_library = priority_queue.max()
 
             # aggiungo per l'output
             output_scanned.append( library_list.copy() )
@@ -74,5 +74,4 @@ if __name__ == "__main__":
     for l,s in zip(output_lib, output_scanned):
         books = l.get_books_in_order(s)
         print(l.id,len(books))
-        for b in books:
-            print(b.id)
+        [b.id for b in books].join(' ')
