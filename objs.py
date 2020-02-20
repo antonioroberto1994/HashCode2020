@@ -4,27 +4,44 @@ class Book():
     def __init__(self, id, score):
         self.id = int(id)
         self.score = int(score)
+
     def __str__(self):
         return "(%d->score=%d)" % (self.id, self.score)
+
+    def __lt__(self, other):
+        return self.score < other.score
+
     def __repr__(self):
         return self.__str__()
 
 class Library():
     def __init__(self, books_in_lib, nbooks_per_day, signup_time):
-        self.books_in_lib = books_in_lib
+        self.books_in_lib = sorted(books_in_lib, reverse=True)
         self.nbooks_per_day = nbooks_per_day
         self.signup_time = signup_time
+    
     def get_score(self, remaining_days, scanned_books):
-        pass
+        score = 0
+        books_to_be_removed = []
+        time = remaining_days - self.signup_time
+        books_in_time = time*self.nbooks_per_day
+        for b in range(book_in_time):
+            book = self.books_in_lib[b]
+            if book not in scanned_books:
+                score += book.score
+        return score
+
     def get_books(self):
         return self.books_in_lib
+
     def get_books_next_day(self, remaining_books):
         pass
+
     def __str__(self):
         return str(self.books_in_lib)
+
     def __repr__(self):
         return self.__str__()
-
 
 
 def read_file(fname):
@@ -43,17 +60,18 @@ def read_file(fname):
             libraries.append(Library(books_in_lib, Mj, Tj))
     return libraries, nbooks, days, scores
     
-
 class LoadData():
     def __init__(self, path):
         self.libraries, self.nbooks, self.days, self.scores = read_file(path)
+
     def get_books_scores(self):
         return self.scores
+    
     def get_library_list(self):
         return self.libraries
+    
     def get_days(self):
         return self.days
-
 
 
 def main(fname):
