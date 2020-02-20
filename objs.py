@@ -4,8 +4,10 @@ class Book():
     def __init__(self, id, score):
         self.id = int(id)
         self.score = int(score)
+        
     def __str__(self):
         return "(%d->score=%d)" % (self.id, self.score)
+
     def __lt__(self, other):
         return self.score < other.score
 
