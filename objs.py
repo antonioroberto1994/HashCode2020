@@ -25,7 +25,7 @@ class Library():
         books_to_be_removed = []
         time = remaining_days - self.signup_time
         books_in_time = time*self.nbooks_per_day
-        for b in range(book_in_time):
+        for b in range(books_in_time):
             book = self.books_in_lib[b]
             if book not in scanned_books:
                 score += book.score
@@ -34,8 +34,8 @@ class Library():
     def get_books(self):
         return self.books_in_lib
 
-    def get_books_next_day(self, remaining_books):
-        pass
+    def get_books_in_order(self, scanned_books):
+        return [b.id for b in self.books_in_lib if b not in scanned_books] #.join(' ')
 
     def __str__(self):
         return str(self.books_in_lib)
