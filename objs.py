@@ -5,6 +5,7 @@ class Book():
 
 class Library():
     def __init__(self):
+        pass
     def get_score(self, remaining_days):
         pass
 
