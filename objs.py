@@ -3,13 +3,16 @@ import sys
 
 class LoadData():
 
-    def get_books_scores():
+    def __init__(self, path):
         pass
 
-    def get_library_list():
+    def get_books_scores(self):
         pass
 
-    def get_days():
+    def get_library_list(self):
+        pass
+
+    def get_days(self):
         pass
 
 
@@ -24,10 +27,10 @@ class Library():
     def get_score(self, remaining_days):
         pass
 
-    def get_books():
+    def get_books(self):
         pass
 
-    def get_books_next_day(remaining_books):
+    def get_books_next_day(self, remaining_books):
         pass
 
 
