@@ -3,7 +3,7 @@ import os, sys
 from objs import Library, LoadData
 from max_heap import MaxHeap
 
-updating_frequency = 1000
+updating_frequency = 1
 
 
 def update_queue(library_list):

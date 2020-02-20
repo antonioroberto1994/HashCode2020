@@ -28,14 +28,13 @@ class Library():
         time = remaining_days - self.signup_time
         books_in_time = time*self.nbooks_per_day
         for b in range(books_in_time):
-            
             if b >= len(self.books_in_lib):
                 break
 
             book = self.books_in_lib[b]
             if book not in scanned_books:
                 score += book.score
-        return score*(1 - self.signup_time/remaining_days)
+        return score*((1-self.signup_time/remaining_days)**2)
 
     def get_books(self, scanned_books, max_days):
         x = []
