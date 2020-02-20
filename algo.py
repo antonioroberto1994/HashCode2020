@@ -18,8 +18,8 @@ def update_queue(library_list):
     return priority_queue
 
 
-def update_scanned_books(scanned_books, library):
-    for book in library.get_books():
+def update_scanned_books(scanned_books, library, remaining_days):
+    for book in library.get_books(scanned_books, remaining_days):
         scanned_books[book] = None
 
 
@@ -47,7 +47,7 @@ if __name__ == "__main__":
 
         while remaining_update_steps != 0:
             # prendo la libreria a massimo guadagno
-            _ , next_library = priority_queue.max()
+            _, next_library = priority_queue.max()
 
             # aggiungo per l'output
             output_lib.append(next_library)
@@ -56,14 +56,12 @@ if __name__ == "__main__":
             del library_dict[next_library]
 
             # Aggiorno i libri scannerizzati
-            update_scanned_books(scanned_books, next_library)
+            update_scanned_books(scanned_books, next_library, remaining_days)
 
-            # update remaining days 
+            # update remaining days
             remaining_days -= next_library.signup_time
             remaining_update_steps -= 1
 
-        # Aggiorno library list 
+        # Aggiorno library list
         # le chiavi del dizionario sono le librerie che non ho allocato
         library_list = [library for library in library_dict.keys()]
-
-       
