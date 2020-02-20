@@ -17,10 +17,11 @@ class Book():
 
 
 class Library():
-    def __init__(self, books_in_lib, nbooks_per_day, signup_time):
+    def __init__(self, j, books_in_lib, nbooks_per_day, signup_time):
         self.books_in_lib = sorted(books_in_lib, reverse=True)
         self.nbooks_per_day = nbooks_per_day
         self.signup_time = signup_time
+        self.id = j
 
     def get_score(self, remaining_days, scanned_books):
         score = 0
@@ -46,7 +47,7 @@ class Library():
         return [b.id for b in self.books_in_lib if b not in scanned_books]
 
     def __str__(self):
-        return str(self.books_in_lib)
+        return ("Library %d: " % self.id )+ str(self.books_in_lib) 
 
     def __repr__(self):
         return self.__str__()
@@ -65,7 +66,7 @@ def read_file(fname):
             xx = next(f).strip().split(' ')
             books_in_lib = [books[int(x)] for x in xx]
             assert(len(books_in_lib) == Nj)
-            libraries.append(Library(books_in_lib, Mj, Tj))
+            libraries.append(Library(j, books_in_lib, Mj, Tj))
     return libraries, nbooks, days, scores
 
 
