@@ -14,8 +14,18 @@ class Library():
         self.books_in_lib = books_in_lib
         self.nbooks_per_day = nbooks_per_day
         self.signup_time = signup_time
+    
     def get_score(self, remaining_days, scanned_books):
-        pass
+        score = 0
+        books_to_be_removed = []
+        time = remaining_days - self.signup_time
+        books_in_time = time*self.nbooks_per_day
+        for b in range(book_in_time):
+            book = self.books_in_lib[b]
+            if book not in scanned_books:
+                score += book.score
+        return score
+
     def get_books(self):
         return self.books_in_lib
     def get_books_next_day(self, remaining_books):
