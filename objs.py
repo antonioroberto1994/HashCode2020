@@ -27,7 +27,7 @@ class Library():
     def get_books():
         pass
 
-    def get_books_at_day(day,remaining_books):
+    def get_books_next_day(remaining_books):
         pass
 
 
