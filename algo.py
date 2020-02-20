@@ -1,5 +1,5 @@
 import heapq
-import os
+import os, sys
 from objs import Library, LoadData
 from max_heap import MaxHeap
 
@@ -25,7 +25,7 @@ def update_scanned_books(scanned_books, library, remaining_days):
 
 if __name__ == "__main__":
 
-    data = LoadData('data'+os.sep+'b_read_on.txt')
+    data = LoadData(sys.argv[1])
 
     library_list = data.get_library_list()
 
@@ -74,4 +74,4 @@ if __name__ == "__main__":
     for l,s in zip(output_lib, output_scanned):
         books = l.get_books_in_order(s)
         print(l.id,len(books))
-        [b.id for b in books].join(' ')
+        print(' '.join([str(b.id) for b in books]))
