@@ -28,7 +28,7 @@ class Library():
         time = remaining_days - self.signup_time
         books_in_time = time*self.nbooks_per_day
         for b in range(books_in_time):
-            if b > len(self.books_in_lib):
+            if b >= len(self.books_in_lib):
                 break
             
             book = self.books_in_lib[b]
