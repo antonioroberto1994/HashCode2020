@@ -3,6 +3,8 @@ import os
 from objs import Library, LoadData
 from max_heap import MaxHeap
 
+updating_frequency = 5
+
 
 def update_queue(library_list):
     remaining_libraries = []
@@ -41,9 +43,9 @@ if __name__ == "__main__":
         # Prendo una versione aggiornata della priority queue
         priority_queue = update_queue(library_list)
 
-        update_steps = 5
+        remaining_update_steps = updating_frequency
 
-        while update_steps != 0:
+        while remaining_update_steps != 0:
             # prendo la libreria a massimo guadagno
             _ , next_library = priority_queue.max()
 
@@ -58,7 +60,7 @@ if __name__ == "__main__":
 
             # update remaining days 
             remaining_days -= next_library.signup_time
-            update_steps -= 1
+            remaining_update_steps -= 1
 
         # Aggiorno library list 
         # le chiavi del dizionario sono le librerie che non ho allocato
