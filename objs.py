@@ -1,5 +1,6 @@
 import sys
 
+
 class Book():
     def __init__(self, id, score):
         self.id = int(id)
@@ -14,12 +15,13 @@ class Book():
     def __repr__(self):
         return self.__str__()
 
+
 class Library():
     def __init__(self, books_in_lib, nbooks_per_day, signup_time):
         self.books_in_lib = sorted(books_in_lib, reverse=True)
         self.nbooks_per_day = nbooks_per_day
         self.signup_time = signup_time
-    
+
     def get_score(self, remaining_days, scanned_books):
         score = 0
         time = remaining_days - self.signup_time
@@ -34,7 +36,8 @@ class Library():
         return self.books_in_lib
 
     def get_books_in_order(self, scanned_books):
-        return [b.id for b in self.books_in_lib if b not in scanned_books] #.join(' ')
+        # .join(' ')
+        return [b.id for b in self.books_in_lib if b not in scanned_books]
 
     def __str__(self):
         return str(self.books_in_lib)
@@ -49,33 +52,35 @@ def read_file(fname):
         xx = next(f).strip().split(' ')
         nbooks, nlibraries, days = [int(x) for x in xx]
         scores = next(f).strip().split(' ')
-        books = [Book(i,s) for i,s in enumerate(scores)]
+        books = [Book(i, s) for i, s in enumerate(scores)]
         for j in range(nlibraries):
             xx = next(f).strip().split(' ')
             Nj, Tj, Mj = [int(x) for x in xx]
             xx = next(f).strip().split(' ')
             books_in_lib = [books[int(x)] for x in xx]
-            assert(len(books_in_lib)==Nj)
+            assert(len(books_in_lib) == Nj)
             libraries.append(Library(books_in_lib, Mj, Tj))
     return libraries, nbooks, days, scores
-    
+
+
 class LoadData():
     def __init__(self, path):
         self.libraries, self.nbooks, self.days, self.scores = read_file(path)
 
     def get_books_scores(self):
         return self.scores
-    
+
     def get_library_list(self):
         return self.libraries
-    
+
     def get_days(self):
         return self.days
 
 
 def main(fname):
     loader = LoadData(fname)
-    print( [str(l) for l in loader.get_library_list()] )
+    print([str(l) for l in loader.get_library_list()])
+
 
 if "__main__" == __name__:
     main(sys.argv[1])
