@@ -32,8 +32,14 @@ class Library():
                 score += book.score
         return score
 
-    def get_books(self):
-        return self.books_in_lib
+    def get_books(self, scanned_books, max_days):
+        x = []
+        max_books = max_days*self.books_in_lib
+        for i,b in enumerate(self.books_in_lib):
+            x.append(b)
+            if i> max_books:
+                break
+        return
 
     def get_books_in_order(self, scanned_books):
         # .join(' ')
